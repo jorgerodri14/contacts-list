@@ -1,16 +1,13 @@
-const extractToken = require('./extract-token')
+require('dotenv').config()
+const { env: { SECRET_KEY } } = process
 const jwt = require('jsonwebtoken')
+const fs = require('fs').promises
 
-module.exports = function (secret) {
+module.exports = (token) => {
 
-        if (!token) return res.status(401).json({ message: 'no token provided' })
-
-        try {
-            const { sub: id } = jwt.verify(token, secret)
-
-            req.id = id
-
-        } catch ({ message }) {
-            res.status(401).end({ message })
-        }
+    try {
+        jwt.verify(token, SECRET_KEY)
+    } catch ({ message }) {
+        if (message) throw Error(message)
     }
+}
