@@ -29,7 +29,7 @@ describe('logic - retrieve contacts', () => {
     })
 
     it('should succeed on correct credentials', async () => {
-        const contacts = await retrieveContacts(token)
+        const contacts = await retrieveContacts(token, PATH)
 
         expect(contacts).to.exist
         expect(contacts[0].id).to.equal(_contacts[0].id)
@@ -45,6 +45,21 @@ describe('logic - retrieve contacts', () => {
             expect(contact.name).to.be.a('string')
 
         })
+    })
+
+    it('should fail on wrong token', async () => {
+        const _id = uuid()
+        
+        const _token = jwt.sign({ sub: _id }, SECRET_KEY)
+
+        try {
+
+            await retrieveContacts(_token, PATH)
+            
+        }catch({message}){
+
+            expect(message).to.equal(`wrong credentials`)
+        }
     })
 
 })

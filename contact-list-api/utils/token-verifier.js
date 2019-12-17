@@ -1,13 +1,18 @@
 require('dotenv').config()
 const { env: { SECRET_KEY } } = process
 const jwt = require('jsonwebtoken')
-const fs = require('fs').promises
 
 module.exports = (token) => {
 
     try {
-        jwt.verify(token, SECRET_KEY)
+        
+        const {sub} = jwt.verify(token, SECRET_KEY)
+
+        return sub
+        
     } catch ({ message }) {
+
         if (message) throw Error(message)
+
     }
 }

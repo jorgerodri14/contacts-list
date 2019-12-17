@@ -25,9 +25,9 @@ describe('logic - authenticate user', () => {
 
     it('should succeed on correct credentials', async () => {
 
-        const _id = await authenticateUser(email, password, PATH)
+        const token = await authenticateUser(email, password, PATH)
         
-        expect(_id).to.equal(id)
+        expect(token).to.exist
 
     })
     
@@ -45,12 +45,17 @@ describe('logic - authenticate user', () => {
         }
     })
     it('should fail on wrong username', async () => {
+
         const email = `email-${Math.random()}@mail.com`
+
         try {
+
             await authenticateUser(email, password, PATH)
+
         }catch({message}){
 
             expect(message).to.equal(`wrong credentials`)
+            
         }
     })
 })
