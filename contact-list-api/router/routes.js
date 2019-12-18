@@ -1,4 +1,4 @@
-const authenticateUser = require('../logic/authenticate')
+const authenticateUser = require('../logic/authenticate-user')
 const retrieveContacts = require('../logic/retrieve-contact-list')
 
 class EndPoints {

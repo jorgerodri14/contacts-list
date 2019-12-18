@@ -7,6 +7,7 @@ const routes = require('./router/routes')
 
 
 const server = http.createServer(async (req, res) => {
+  response.setHeader('Access-Control-Allow-Origin', '*');
   await router(req, res, routes)
 });
 
