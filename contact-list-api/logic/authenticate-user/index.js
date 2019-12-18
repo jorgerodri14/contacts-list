@@ -4,7 +4,7 @@ const validate = require('../../utils/validate')
 const fs = require('fs').promises
 const jwt = require('jsonwebtoken')
 
-module.exports = (email, password, path=PATH) =>{
+module.exports = ({email, password}, path=PATH) => {
     validate.string(email)
     validate.string.notVoid('email', email)
     validate.email(email)
@@ -22,7 +22,7 @@ module.exports = (email, password, path=PATH) =>{
     
         const token = jwt.sign({ sub: user.id }, SECRET_KEY)
 
-
         return token
+        
     })()
 } 

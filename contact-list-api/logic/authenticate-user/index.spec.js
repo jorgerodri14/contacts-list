@@ -25,7 +25,7 @@ describe('logic - authenticate user', () => {
 
     it('should succeed on correct credentials', async () => {
 
-        const token = await authenticateUser(email, password, PATH)
+        const token = await authenticateUser({email, password}, PATH)
         
         expect(token).to.exist
 
@@ -37,7 +37,7 @@ describe('logic - authenticate user', () => {
         
         try {
         
-            await authenticateUser(email, pass, PATH)
+            await authenticateUser({email, password}, PATH)
         
         }catch({message}){
 
@@ -50,7 +50,7 @@ describe('logic - authenticate user', () => {
 
         try {
 
-            await authenticateUser(email, password, PATH)
+            await authenticateUser({email, password}, PATH)
 
         }catch({message}){
 
