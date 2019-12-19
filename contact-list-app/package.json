@@ -18,9 +18,9 @@
     ]
   },
   "scripts": {
-    "test": "jest --watchAll",
+    "test": "react-scripts test",
     "test:coverage": "jest --coverage",
-    "test:debug": "node --inspect-brk node_modules/.bin/jest --runInBand --no-cache",
+    "test:debug": "react-scripts --inspect-brk=9230 test --runInBand --no-cache",
     "start": "npx webpack-dev-server -d",
     "build": "npx webpack -p"
   },
@@ -37,12 +37,15 @@
     "babel-loader": "^8.0.6",
     "css-loader": "^3.3.2",
     "html-webpack-plugin": "^3.2.0",
+    "jsonwebtoken": "^8.5.1",
     "mini-css-extract-plugin": "^0.8.0",
     "node-sass": "^4.13.0",
+    "react-scripts": "^3.3.0",
     "sass-loader": "^8.0.0",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10",
-    "webpack-dev-server": "^3.9.0"
+    "webpack-dev-server": "^3.9.0",
+    "whatwg-fetch": "^3.0.0"
   },
   "dependencies": {
     "babel-jest": "^24.9.0",
