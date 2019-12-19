@@ -1,23 +1,25 @@
-const REACT_APP_API_URL = process.env.REACT_APP_API_URL
+const CONTACT_API = process.env.CONTACT_API
 export default function (email, password) {
 
     return (async () => {
-        
-        const response = await fetch(`${REACT_APP_API_URL}/login`, {
+
+        const response = await fetch(`${CONTACT_API}/login`, {
             method: 'POST',
-            headers: { 'content-type': 'application/json' },
-            body: JSON.stringify({email, password})
+            headers: { 'content-type': 'application/json'},
+            body: JSON.stringify({ email, password })
         })
         
         if (response.status !== 200) {
-            const { error } = await response.json()
+            const {error} = await response.json()
+            
             throw Error(error)
         }
         else {
-            const {token} = await response.json()
+            
+            const {data:token} = await response.json()
 
             return token
         }
-            
+
     })()
 }

@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import { Route, withRouter } from 'react-router-dom';
 import Login from '../Login';
-import authenticateUser from '../../logic/authenticate-user'
+import Home from '../Home';
+import authenticateUser from '../../logic/authenticate-user';
 
 
 export default withRouter(class extends Component {
     
     constructor() {
         super()
-        this.state = { error: undefined }
+        this.state = { error: undefined, credentials: undefined }
 
         this.handleLogin = this.handleLogin.bind(this)
 
@@ -17,32 +18,32 @@ export default withRouter(class extends Component {
     UNSAFE_componentWillMount(){
         const { history } = this.props;
 
-        const { id, token } = sessionStorage;
-        if(id && token){
-
+        const token = localStorage.getItem('token');
+        if(token){
+            this.setState({credentials:token})
         }else{
             history.push('/login');
         }
     }
 
-    handleLogin(email, password) {
+    handleLogin(email, password, checked) {
         try {
             authenticateUser(email, password)
-                .then(credentials => {
-                    sessionStorage.id = credentials.id
-                    sessionStorage.token = credentials.token
+                .then(token => {
+                    checked && localStorage.setItem('token', token)
+                    this.setState({credentials:token})
                 })
-                .catch(({ message }) => this.setState({ error: message }))
+                .catch(({ message }) =>  this.setState({ error: message }))
         } catch ({ message }) {
             this.setState({ error: message })
         }
     }
 
     render() {
-        const { handleLogin } = this
+        const { state:{ error }, handleLogin } = this
         return <>
-            <Route path='/login' component={Login} onLogin={handleLogin} />
-            {/* <Route path= '/home' render={()=>{}}/> */}
+            <Route path='/login' render={()=> <Login onLogin={handleLogin} error={error} /> } />
+            <Route path= '/home' render={()=>{ <Home credentials={credentials} />} }/>
         </>
     }
 
