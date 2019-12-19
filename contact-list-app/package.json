@@ -49,6 +49,7 @@
   },
   "dependencies": {
     "babel-jest": "^24.9.0",
+    "contact-list-utils": "file:../contact-list-utils",
     "dotenv": "^8.2.0",
     "dotenv-webpack": "^1.7.0",
     "jest": "^24.9.0",

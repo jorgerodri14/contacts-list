@@ -32,8 +32,6 @@ describe('logic - authenticate user', () => {
     })
     
     it('should fail on wrong password', async () => {
-
-        const pass = `password-${Math.random()}`
         
         try {
         
