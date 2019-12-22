@@ -22,8 +22,9 @@ export default function (email, password) {
         else {
             
             const {data:token} = await response.json()
-debugger
+            
             return token
+            
         }
 
     })()

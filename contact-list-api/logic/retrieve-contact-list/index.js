@@ -1,10 +1,7 @@
 require('dotenv').config()
 const { env: { PATH_USER: PATH, URL_CONTACT_LIST: CONTACTS } } = process
 const https = require('https')
-const getData = require('../../utils/get-data')
-const tokenVerifier = require('../../utils/token-verifier')
-const validate = require('../../utils/validate')
-const fs = require('fs').promises
+const validate = require('contact-list-utils')
 
 module.exports = async (path = PATH) => {
     validate.string(path)

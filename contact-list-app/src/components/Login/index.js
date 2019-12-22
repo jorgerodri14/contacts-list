@@ -1,8 +1,7 @@
 import React from 'react'
-import { withRouter} from 'react-router-dom';
 import Feedback from '../Feedback'
 
-export default withRouter(function({ onLogin, error }) {
+export default function({ onLogin, error }) {
     return <section>
         <form onSubmit={event => {
             event.preventDefault()
@@ -14,10 +13,10 @@ export default withRouter(function({ onLogin, error }) {
             <h1>Login</h1>
             <input type="email" name="email" placeholder="e-mail" />
             <input type="password" name="password" placeholder="password" />
-            <input type='checkbox' name='remember' value='yes'/><label for="remember">Remember me</label>
+            <input type='checkbox' name='remember' value='yes'/><label>Remember me</label>
             <button>📨</button>
         </form>
 
         {error && <Feedback message={error} />}
     </section>
-})
+}

@@ -1,50 +1,43 @@
-import React, { Component } from 'react';
-import { Route, withRouter } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Route, useHistory } from 'react-router-dom';
 import Login from '../Login';
 import Home from '../Home';
-import authenticateUser from '../../logic/authenticate-user';
+import logic from '../../logic';
+
+export default function App() {
+
+    const [error, setError] = useState(undefined);
+    const [token, setToken] = useState(undefined)
+    let history = useHistory()
+
+    useEffect(() => {
+        (() => {
+            const token = logic.__token__;
+            if (token) {
+                history.push('/home');
+            } else {
+                history.push('/login');
+            }
+        })()
+    }, [])
 
 
-export default withRouter(class extends Component {
-    
-    constructor() {
-        super()
-        this.state = { error: undefined, credentials: undefined }
-
-        this.handleLogin = this.handleLogin.bind(this)
-
-    }
-
-    UNSAFE_componentWillMount(){
-        const { history } = this.props;
-
-        const token = localStorage.getItem('token');
-        if(token){
-            this.setState({credentials:token})
-        }else{
-            history.push('/login');
-        }
-    }
-
-    handleLogin(email, password, checked) {
+    function handleLogin(email, password, checked) {
         try {
-            authenticateUser(email, password)
-                .then(token => {
-                    checked && localStorage.setItem('token', token)
-                    this.setState({credentials:token})
+            logic.authenticateUser(email, password)
+                .then(credentials => {
+                    if (checked) logic.__token__ = credentials;
+                    setToken(credentials)
+                    history.push('/home')
                 })
-                .catch(({ message }) =>  this.setState({ error: message }))
+                .catch(({ message }) => setError(message))
         } catch ({ message }) {
-            this.setState({ error: message })
+            setError(message)
         }
     }
 
-    render() {
-        const { state:{ error }, handleLogin } = this
-        return <>
-            <Route path='/login' render={()=> <Login onLogin={handleLogin} error={error} /> } />
-            <Route path= '/home' render={()=>{ <Home credentials={credentials} />} }/>
-        </>
-    }
-
-})
+    return <>
+        <Route path='/login' render={() => <Login onLogin={handleLogin} error={error} />} />
+        <Route path='/home' render={() => <Home error={error} history={history} credentials={token}/>} />
+    </>
+}

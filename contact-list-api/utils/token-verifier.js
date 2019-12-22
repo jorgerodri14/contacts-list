@@ -2,7 +2,7 @@ require('dotenv').config()
 const { env: { SECRET_KEY } } = process
 const jwt = require('jsonwebtoken')
 
-module.exports = (req) => {
+module.exports = (req) => {debugger
     const { headers: { authorization } } = req;
     
     let token = undefined
