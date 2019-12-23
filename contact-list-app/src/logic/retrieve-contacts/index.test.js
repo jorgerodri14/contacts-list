@@ -41,7 +41,7 @@ describe('retrieve contacts', () => {
         })
     })
 
-    it('should succeed on correct data', () => {
+    it('should fail on undefined token', () => {
 
         expect(() => retrieveContacts()).toThrow(`undefined is not a string`);
     })

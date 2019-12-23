@@ -13,10 +13,10 @@ module.exports = {
         port: 3000
     },
     module: {
-        rules:[
+        rules: [
             {
                 test: /\.(js|jsx)$/,
-                use : [ 'babel-loader' ],
+                use: ['babel-loader'],
                 exclude: /node_modules/
             },
             {
@@ -26,8 +26,44 @@ module.exports = {
                     'css-loader',
                     'sass-loader'
                 ]
+            },
+            {
+                test: /\.(png|jpg|gif|jpeg)$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: '[name].[ext]',
+                            outputPath: 'static/img',
+                            output: 'static/',
+                            useRelativePath: true
+                        }
+                    },
+                    {
+                        loader: 'image-webpack-loader',
+                        options: {
+                            mozjpeg: {
+                                progressive: true,
+                                quality: 65
+                            },
+                            optipng: {
+                                enabled: true,
+                            },
+                            pngquant: {
+                                quality: [0.65, 0.90],
+                                speed: 4
+                            },
+                            gifsicle: {
+                                interlaced: false,
+                            },
+                            webp: {
+                                quality: 75
+                            }
+                        }
+                    }
+                ]
             }
-            
+
         ]
     },
     plugins: [
@@ -48,7 +84,7 @@ module.exports = {
         new dotenv()
     ],
     resolve: {
-        alias: {        
+        alias: {
             'react-router-dom': path.resolve('./node_modules/react-router-dom')
         }
     }

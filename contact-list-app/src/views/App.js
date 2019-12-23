@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Route, useHistory } from 'react-router-dom';
-import Login from '../Login';
-import Home from '../Home';
-import logic from '../../logic';
+import Login from './pages/Login';
+import Home from './pages/Home';
+import logic from '../logic';
 
-export default function App() {
+export default function() {
 
     const [error, setError] = useState(undefined);
     const [token, setToken] = useState(undefined)
@@ -14,6 +14,7 @@ export default function App() {
         (() => {
             const token = logic.__token__;
             if (token) {
+                setToken(token)
                 history.push('/home');
             } else {
                 history.push('/login');
@@ -28,6 +29,7 @@ export default function App() {
                 .then(credentials => {
                     if (checked) logic.__token__ = credentials;
                     setToken(credentials)
+                    setError(undefined)
                     history.push('/home')
                 })
                 .catch(({ message }) => setError(message))
@@ -36,8 +38,8 @@ export default function App() {
         }
     }
 
-    return <>
+    return <div className='app'>
         <Route path='/login' render={() => <Login onLogin={handleLogin} error={error} />} />
-        <Route path='/home' render={() => <Home error={error} history={history} credentials={token}/>} />
-    </>
+        <Route path='/home' render={() => <Home error={error} setError={setError} history={history} credentials={token}/>} />
+    </div>
 }

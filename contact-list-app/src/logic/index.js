@@ -1,5 +1,7 @@
 import authenticateUser from './authenticate-user'
 import retrieveContacts from './retrieve-contacts'
+import retrieveConnections from './retrieve-connections'
+import retrieveContactsLetter from './retrieve-contacts-letter'
 
 export default {
     set __token__(token) {
@@ -17,6 +19,8 @@ export default {
         return sessionStorage.contacts
     },
     authenticateUser,
-    retrieveContacts
+    retrieveContacts,
+    retrieveConnections,
+    retrieveContactsLetter
 
 }
