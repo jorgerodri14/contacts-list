@@ -1,7 +1,8 @@
 [
     {
-        "email": "joe@mail.com",
-        "password": "doe",
-        "id": "fc78a1e21753465592586abb41d279e4"
+        "id": "f07245cf-0441-42f5-b7b6-03d5180c41d4",
+        "name": "Joe",
+        "email": "joe@doe.com",
+        "password": "123"
     }
 ]

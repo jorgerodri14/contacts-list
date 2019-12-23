@@ -1,6 +1,6 @@
 require('dotenv').config()
-const { env: { PATH_USER: PATH, SECRET_KEY } } = process
-const validate = require('../../utils/validate')
+const { env: { PATH_TEST_USER: PATH, SECRET_KEY } } = process
+const validate = require('contact-list-utils')
 const fs = require('fs').promises
 const jwt = require('jsonwebtoken')
 

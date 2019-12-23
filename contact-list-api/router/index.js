@@ -3,20 +3,23 @@ const getData = require('../utils/get-data')
 const tokenVerifier = require('../utils/token-verifier')
 const helpers = require('../helper');
 
-module.exports = async (req, res, routes) => {debugger
+module.exports = async (req, res, routes) => {
+
     const route = routes.find(route => route.method === req.method && req.url.split('/')[2] === route.path)
-    debugger
+    
     try {
 
         if (!route) helpers.error(res, 'wrong request', 400)
-        
-        if (route.secured) {
-            
-            !tokenVerifier(req) && new Error('token verification error')
-            
-        }
 
         let body;
+
+        if (route.secured) {
+            debugger
+            body = tokenVerifier(req)
+
+            !body && new Error('token verification error')
+            
+        }
 
         if (route.method === 'POST') {
 
