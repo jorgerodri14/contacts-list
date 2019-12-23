@@ -1,0 +1,49 @@
+@import  '../../../styles/colors'
+
+.list
+    display: flex
+    flex-direction: column
+    border: 1px solid $grey
+    border-top-left-radius: 5px
+    border-bottom-left-radius: 5px
+    margin-left: 0.5rem
+    height: 99vh
+    width: 20
+    &__comb
+        display: flex
+        height: 100%
+        border-top: .5px solid $grey
+    &__person
+        list-style-type: none
+    &__ul
+        display: block
+        height: 85vh
+        width: 15vw
+        margin-left: 0.3rem
+        overflow: auto
+    &__contact
+        display: flex
+        flex-direction: column
+        align-items: center
+    &__section
+        display: flex
+        margin-top: .5rem
+        margin-right: 5rem
+        padding-left: 1.25rem
+    &__p
+        text-align: center
+        width: 3.5rem
+        font-family: 'Roboto', sans-serif
+    &__btn
+        border: none
+        width: 1rem
+        background-color: $input
+    &__btn:hover
+        background-color: $grey
+    &__a
+        text-decoration: none
+        font-family: 'Roboto', sans-serif
+        color: $grey
+        font-size: .8em
+    &__a:hover
+        color: $seaSerpent

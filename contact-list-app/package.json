@@ -1,0 +1,79 @@
+{
+  "name": "webpack-react",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "babel": {
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-react"
+    ],
+    "plugins": [
+      [
+        "@babel/plugin-transform-runtime",
+        {
+          "regenerator": true
+        }
+      ]
+    ]
+  },
+  "scripts": {
+    "test": "react-scripts test",
+    "test:coverage": "jest --coverage",
+    "test:debug": "react-scripts --inspect-brk=9230 test --runInBand --no-cache",
+    "start": "npx webpack-dev-server -d",
+    "build": "npx webpack -p"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.7.4",
+    "@babel/core": "^7.7.4",
+    "@babel/plugin-proposal-class-properties": "^7.7.4",
+    "@babel/plugin-transform-async-to-generator": "^7.7.4",
+    "@babel/plugin-transform-runtime": "^7.7.6",
+    "@babel/preset-env": "^7.7.4",
+    "@babel/preset-react": "^7.7.4",
+    "babel-loader": "^8.0.6",
+    "css-loader": "^3.3.2",
+    "file-loader": "^5.0.2",
+    "html-webpack-plugin": "^3.2.0",
+    "image-webpack-loader": "^6.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "mini-css-extract-plugin": "^0.8.0",
+    "node-sass": "^4.13.0",
+    "react-scripts": "^3.3.0",
+    "sass-loader": "^8.0.0",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.9.0",
+    "whatwg-fetch": "^3.0.0"
+  },
+  "dependencies": {
+    "babel-jest": "^24.9.0",
+    "contact-list-utils": "file:../contact-list-utils",
+    "dotenv": "^8.2.0",
+    "dotenv-webpack": "^1.7.0",
+    "jest": "^24.9.0",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-router-dom": "^5.1.2",
+    "uuid": "^3.3.3"
+  },
+  "jest": {
+    "watchPathIgnorePatterns": [
+      "src/common"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}",
+      "!src/views/**/*.js",
+      "!src/index.js",
+      "!src/logic/index.js",
+      "!src/utils/index.js",
+      "!src/serviceWorker.js",
+      "!<rootDir>/node_modules/",
+      "!<rootDir>/path/to/dir/"
+    ]
+  }
+}
