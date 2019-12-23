@@ -3,6 +3,7 @@ import logic from '../../../logic'
 import '../../../utils/sortArray'
 import ContactList from '../ContactList'
 import ContactDetails from '../ContactDetails'
+import './index.sass'
 
 export default function ({ history, credentials, error, setError }) {
 
@@ -38,8 +39,8 @@ export default function ({ history, credentials, error, setError }) {
         }
     }
 
-    return <>
+    return <div className='home'>
         {contacts.length !== 0 && <ContactList contacts={contacts} onRetriveDetail={handleRetrieveDetail} />}
         {connections.length !== 0 && <ContactDetails connections={connections} error={error} />}
-    </>
+    </div>
 }

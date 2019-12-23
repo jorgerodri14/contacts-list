@@ -3,6 +3,7 @@ import { Route, useHistory } from 'react-router-dom';
 import Login from './pages/Login';
 import Home from './pages/Home';
 import logic from '../logic';
+import './App.sass'
 
 export default function() {
 

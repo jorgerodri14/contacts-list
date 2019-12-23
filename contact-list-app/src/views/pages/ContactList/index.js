@@ -4,6 +4,7 @@ import '../../../utils/sortArray'
 import Alphabet from '../../Components/Alphabet'
 import Browser from '../../Components/Browser'
 import mapLetter from '../../../utils/mapLetter'
+import './index.sass'
 
 export default function ({ contacts, onRetriveDetail }) {
     const { pageList, page, dispatch, setList, end } = usePage(50, contacts)
@@ -18,26 +19,30 @@ export default function ({ contacts, onRetriveDetail }) {
         }
     }
 
-    return <>
-        <Alphabet onLetter={handleLetter} />
+    return <div className='list'>
         <Browser list={contacts} setList={setList} />
-        {pageList.length !== 0 &&
-            <ul>
-                {pageList.map(contact => <li><a href='#' onClick={(event) => {
-                    event.preventDefault()
-                    onRetriveDetail(contact)
-                }}>
-                    <h3>{contact.name}</h3></a>
-                </li>)}
-                <section>{page < end &&
-                    <button onClick={() =>
-                        dispatch('+')
-                    }>+</button>}
-                    <p>{page}/{end}</p>{page > 1 &&
-                        <button onClick={() =>
-                            dispatch('-')
-                        }>-</button>}
+        <div className='list__comb'>
+            <Alphabet onLetter={handleLetter} />
+            <div className='list__contact'>
+                {pageList.length !== 0 &&
+                    <ul className='list__ul'>
+                        {pageList.map(contact => <li className='list__person' key={contact.id.toString()}><a className='list__a' href='#' onClick={(event) => {
+                            event.preventDefault()
+                            onRetriveDetail(contact)
+                        }}>
+                            <h3>{contact.name}</h3></a>
+                        </li>)}
+                    </ul> || <p>Users not found.</p>}
+                <section className='list__section'>{page > 1 &&
+                    <button className='list__btn' onClick={() =>
+                        dispatch('-')
+                    }>-</button>}
+                    <p className='list__p'>{page}/{end}</p>{page < end &&
+                        <button className='list__btn' onClick={() =>
+                            dispatch('+')
+                        }>+</button>}
                 </section>
-            </ul> || <p>Users not found.</p>}
-    </>
+            </div>
+        </div>
+    </div>
 }

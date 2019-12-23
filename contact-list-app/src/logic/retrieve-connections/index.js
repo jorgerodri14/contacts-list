@@ -6,5 +6,5 @@ export default function (user, contacts) {
     validate.array(user.connections);
     validate.array(contacts);
     const connections = contacts.filter(({id})=>user.connections.includes(id));
-    return {name:user.name, connections}
+    return {user:{name:user.name, avatar:user.avatar}, connections}
 }

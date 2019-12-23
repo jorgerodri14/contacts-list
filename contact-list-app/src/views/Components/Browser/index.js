@@ -1,17 +1,17 @@
 import React from 'react';
 import retrieveContactsLetter from '../../../logic/retrieve-contacts-letter'
+import './index.sass'
 
 export default function ({ list, setList }) {
 
     function handleSearchQuery(event) {
-        
         const { value: letters } = event.target
         const _contacts = retrieveContactsLetter(list, letters)
         setList(_contacts)
     }
-    return <>
+    return <div className='search'>
         <form onChange={handleSearchQuery}>
-            <label>🔎</label> <input type='text' name='search' placeholder='Search' />
+            <input className='search__input' type='text' name='search' placeholder='🔎 search' />
         </form>
-    </>
+    </div>
 }

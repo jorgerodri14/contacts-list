@@ -31,7 +31,7 @@ describe('retrieve connections', () => {
     it('should succeed on correct data', (done) => {
         const response = retrieveConnections(user, contacts)
 
-        expect(response.name).toBe(user.name)
+        expect(response.user.name).toBe(user.name)
         expect(response.connections).toBeInstanceOf(Array)
         expect(response.connections[0].id).toBe(user.connections[0])
         done()
