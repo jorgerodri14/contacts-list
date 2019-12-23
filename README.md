@@ -18,5 +18,5 @@ Builds the app for production to the build folder.
 
 ## Credentials
 
-email: joe@doe.es
+email: joe@doe.com,
 password: 123
