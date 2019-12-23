@@ -28,7 +28,7 @@ export default function ({ error, connections: { user, connections } }) {
             {pageList.length !== 0 &&
                 <ul className='details__ul'>
                     {pageList.map(contact => <li className='details__li' key={contact.id.toString()}>
-                        <img className='details__avatar' src={contact.avatar} />
+                        <img className='details__avatar' src={contact.avatar} alt='Not image' />
                         <h4 className='details__h4' >{contact.name}</h4>
                     </li>)}
                 </ul> || <p>Users not found.</p>}
