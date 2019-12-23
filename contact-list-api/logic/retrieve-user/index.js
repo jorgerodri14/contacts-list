@@ -3,6 +3,15 @@ const { env: { PATH_TEST_USER: PATH } } = process
 const validate = require('contact-list-utils')
 const fs = require('fs').promises
 
+/**
+ * Retrieve User
+ * 
+ * @param {string} path
+ * @param {string} id
+ * 
+ * @returns {Promise}
+ */
+
 module.exports = (id, path=PATH) => {
     validate.string(id)
     validate.string.notVoid('id', id)

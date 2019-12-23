@@ -1,5 +1,12 @@
 const validate = require('contact-list-utils')
-
+/**
+ * Retrieve list for query
+ * 
+ * @param {Array} list
+ * @param {string} letters
+ * 
+ * @returns {Promise}
+ */
 export default function (list, letters){
     validate.array(list);
     validate.string(letters);

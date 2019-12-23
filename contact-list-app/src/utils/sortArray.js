@@ -1,5 +1,11 @@
 const validate = require('contact-list-utils')
-
+/**
+ * Ordenate array of object
+ * 
+ * @param {string} prop
+ * 
+ * @returns {Promise}
+ */
 if (typeof Array.prototype.sortList !== 'function') {
     Array.prototype.sortList = function (prop) {
         validate.string(prop);

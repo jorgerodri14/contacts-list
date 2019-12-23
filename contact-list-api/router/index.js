@@ -5,7 +5,7 @@ const helpers = require('../helper');
 
 module.exports = async (req, res, routes) => {
 
-    const route = routes.find(route => route.method === req.method && req.url.split('/')[2] === route.path)
+    const route = routes.find(route => route.method === req.method && req.url.split('/')[2] === route.endPoint)
     
     try {
 

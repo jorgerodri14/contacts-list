@@ -4,6 +4,16 @@ const validate = require('contact-list-utils')
 const fs = require('fs').promises
 const jwt = require('jsonwebtoken')
 
+/**
+ * Authenticate user
+ * 
+ * @param {string} email  
+ * @param {string} password  
+ * @param {string} path
+ * 
+ * @returns {Promise}
+ */
+
 module.exports = ({email, password}, path=PATH) => {
     validate.string(email)
     validate.string.notVoid('email', email)

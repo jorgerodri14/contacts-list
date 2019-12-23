@@ -1,5 +1,12 @@
 const validate = require('contact-list-utils')
-
+/**
+ * Retrieve list to contacts for one letter
+ * 
+ * @param {string} path
+ * @param {string} id
+ * 
+ * @returns {Promise}
+ */
 export default function(arr, letter){
     validate.string(letter);
     let res = []

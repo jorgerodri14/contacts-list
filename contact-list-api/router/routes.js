@@ -1,11 +1,20 @@
 const authenticateUser = require('../logic/authenticate-user')
 const retrieveContacts = require('../logic/retrieve-contact-list')
 const retrieveUser = require('../logic/retrieve-user')
-
+/**
+ * Create routes for router
+ * 
+ * @param {string} method GET, POST...
+ * @param {string} endPoint
+ * @param {Function} handler function to apply
+ * @param {Boolean} secured indicate if need verify
+ * 
+ * @returns {Promise}
+ */
 class EndPoints {
-    constructor(method, path, handler, secured){
+    constructor(method, endPoint, handler, secured){
         this.method = method;
-        this.path = path;
+        this.endPoint = endPoint;
         this.handler = handler;
         this.secured = secured;
     };

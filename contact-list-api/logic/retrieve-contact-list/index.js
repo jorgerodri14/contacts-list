@@ -3,6 +3,14 @@ const { env: { PATH_USER: PATH, URL_CONTACT_LIST: CONTACTS } } = process
 const https = require('https')
 const validate = require('contact-list-utils')
 
+/**
+ * Authenticate user
+ * 
+ * @param {string} path
+ * 
+ * @returns {Promise}
+ */
+
 module.exports = async (path = PATH) => {
     validate.string(path)
     validate.string.notVoid('path', path)

@@ -1,5 +1,14 @@
 const CONTACT_API = process.env.CONTACT_API
 const validate = require('contact-list-utils')
+/**
+ * Authenticate user
+ * 
+ * @param {string} email
+ * @param {string} password
+ * 
+ * @returns {Promise}
+ */
+
 export default function (email, password) {
     validate.string(email)
     validate.string.notVoid('email', email)

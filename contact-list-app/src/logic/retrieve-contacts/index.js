@@ -1,5 +1,12 @@
 const CONTACT_API = process.env.CONTACT_API
 const validate = require('contact-list-utils')
+/**
+ * Retrieve contacts list
+ * 
+ * @param {string} token
+ * 
+ * @returns {Promise}
+ */
 export default function (token) {
     validate.string(token);
     validate.string.notVoid('token', token);
