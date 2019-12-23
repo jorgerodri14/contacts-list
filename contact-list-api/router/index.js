@@ -14,7 +14,7 @@ module.exports = async (req, res, routes) => {
         let body;
 
         if (route.secured) {
-            debugger
+            
             body = tokenVerifier(req)
 
             !body && new Error('token verification error')
