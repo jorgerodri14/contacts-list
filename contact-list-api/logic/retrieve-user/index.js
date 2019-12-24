@@ -1,5 +1,5 @@
 require('dotenv').config()
-const { env: { PATH_TEST_USER: PATH } } = process
+const { env: { PATH_USER: PATH } } = process
 const validate = require('contact-list-utils')
 const fs = require('fs').promises
 
