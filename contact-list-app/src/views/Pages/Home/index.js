@@ -22,7 +22,6 @@ export default function ({ history, credentials, error, setError }) {
                     setContacts(contacts)
                     const connections = logic.retrieveConnections(contacts[0], contacts)
                     setConnections(connections)
-                    error && setError(undefined)
                 } catch ({ message }) {
                     setError(message)
                 }
